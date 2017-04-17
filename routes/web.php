@@ -17,8 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'TopicController@index');
 
-Auth::routes();
+Route::get('/new-topic', 'TopicController@create');
+Route::post('/new-topic', 'TopicController@store');
+Route::get('/topic/{id}', 'TopicController@show');
+Route::get('/topic/{id}/edit', 'TopicController@edit');
+Route::post('/topic/{id}/update', 'TopicController@update');
+Route::delete('/topic/{id}/delete', 'TopicController@destroy');
 
-Route::get('/home', 'HomeController@index');
+
+
