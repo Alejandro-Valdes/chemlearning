@@ -51,7 +51,7 @@
 
 	    if(!okay){
 			event.preventDefault();
-			alert('Check at least one correct question');
+			alert('Check at least one correct answer');
 	    }
 
 	   

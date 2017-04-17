@@ -16,7 +16,13 @@
     		@if ( !$questions->count() )
 			    There is no questions till now. Create a new question now!!! <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>
 			@else
-				<p></p>
+				@foreach( $questions as $question )
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{$question->question_body}}
+                        </div>
+                    </div>
+                @endforeach
 			@endif
     	</div>
     </div>

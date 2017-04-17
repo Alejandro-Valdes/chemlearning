@@ -59,7 +59,7 @@ class TopicController extends Controller
 
             $topic->save();
 
-            return redirect('/home');
+            return redirect('/');
         }
     }
 

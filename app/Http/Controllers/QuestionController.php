@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use App\Answer;
+use App\Topic;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -32,9 +37,36 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $topic_id)
     {
-        dd($request);
+        $topic = Topic::find($topic_id);
+
+        $question = new Question();
+        $question->question_body = $request->get('question_body');
+        $question->topic()->associate($topic);
+        $question->save();
+
+        $answers = $request->answers;
+
+        foreach($answers as $option) {
+            if(!empty($option['body'])) {
+                $answer = new Answer([ 'text' => $option['body'] ]);
+                if(isset($option['is_correct'])) 
+                {
+                    $answer->is_correct = (bool) $option['is_correct'];
+                }
+                else
+                {
+                    $answer->is_correct = False;
+                }
+                
+                $answer->question()->associate($question);
+                $answer->save();
+            }
+        }
+
+        $questions = $topic->questions;
+        return view('topics.show')->withTopic($topic)->withQuestions($questions);
     }
 
     /**
