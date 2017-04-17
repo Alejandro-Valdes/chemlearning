@@ -72,8 +72,8 @@ class TopicController extends Controller
     public function show($id)
     {
         $topic = Topic::find($id);
-
-        return view('topics.show')->withTopic($topic);
+        $questions = $topic->questions;
+        return view('topics.show')->withTopic($topic)->withQuestions($questions);
     }
 
     /**

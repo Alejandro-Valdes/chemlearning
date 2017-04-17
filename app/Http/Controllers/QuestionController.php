@@ -13,7 +13,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -21,9 +21,9 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create($topic_id)
+    {  
+        return view('questions.create')->withTopic_id($topic_id); 
     }
 
     /**
@@ -34,7 +34,7 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

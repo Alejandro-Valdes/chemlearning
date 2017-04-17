@@ -26,5 +26,8 @@ Route::get('/topic/{id}/edit', 'TopicController@edit');
 Route::post('/topic/{id}/update', 'TopicController@update');
 Route::delete('/topic/{id}/delete', 'TopicController@destroy');
 
+Route::get('/topic/{topic_id}/new-question', 'QuestionController@create');
+Route::post('/topic/{topic_id}/new-question', 'QuestionController@store');
+
 
 
