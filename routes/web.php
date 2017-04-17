@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'TopicController@index');
+Route::get('/', 'TopicController@index');
 
 Route::get('/new-topic', 'TopicController@create');
 Route::post('/new-topic', 'TopicController@store');
