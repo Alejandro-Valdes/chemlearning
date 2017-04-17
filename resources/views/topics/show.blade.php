@@ -23,6 +23,7 @@
                         </div>
                     </div>
                 @endforeach
+                <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>
 			@endif
     	</div>
     </div>

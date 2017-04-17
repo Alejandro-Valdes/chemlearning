@@ -66,7 +66,7 @@ class QuestionController extends Controller
         }
 
         $questions = $topic->questions;
-        return view('topics.show')->withTopic($topic)->withQuestions($questions);
+        return redirect('topic/' . $topic_id )->withTopic($topic)->withQuestions($questions);
     }
 
     /**
