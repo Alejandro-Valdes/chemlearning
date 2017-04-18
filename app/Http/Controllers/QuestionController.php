@@ -75,9 +75,13 @@ class QuestionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($topic_id, $id)
     {
-        //
+        $topic = Topic::find($topic_id);
+        $question = Question::find($id);
+        
+        $answers = $question->answers;
+        return view('questions.show')->withQuestion($question)->withAnswers($answers)->withTopic($topic);
     }
 
     /**
