@@ -22,7 +22,7 @@
                             {{$question->question_body}}
                         </div>
                         <div class="col-sm-4">
-                            <a href="{{ url('/topic/' . $topic->id . '/question/' . $question->id) }}">Solve question</a>
+                            <a href="{{ url('/topic/' . $topic->id . '/question/' . $question->id) }}">Solve</a>
                         </div>
                     </div>
                 @endforeach
