@@ -123,6 +123,6 @@ class TopicController extends Controller
             $data['errors'] = 'Invalid Operation';
         }
 
-        return redirect('/home')->with($data);
+        return redirect('/')->with($data);
     }
 }
