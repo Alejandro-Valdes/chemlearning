@@ -14,7 +14,7 @@
     <div class="row">
     	<div class="col-sm-8 col-sm-offset-2">
     		@if ( !$questions->count() )
-			    There is no questions till now. Create a new question now!!! <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>
+			    There are no questions yet. @permission('can_add_question')Create a new question to get started! <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>@endpermission
 			@else
 				@foreach( $questions as $question )
                     <div class="row">
@@ -26,7 +26,9 @@
                         </div>
                     </div>
                 @endforeach
+                @permission('can_add_question')
                 <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>
+                @endpermission
 			@endif
     	</div>
     </div>

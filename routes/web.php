@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\User as User;
+use App\Role as Role;
+use App\Permission as Permission;
 
 Auth::routes();
 
@@ -30,32 +30,82 @@ Route::get('/topic/{topic_id}/new-question', 'QuestionController@create');
 Route::post('/topic/{topic_id}/new-question', 'QuestionController@store');
 Route::get('/topic/{topic_id}/question/{id}', 'QuestionController@show');
 
-use App\Role as Role;
-use App\Permission as Permission;
+
 Route::get('setup-entrust', function() {
-	// para que solo admin pueda agregar / modificar / borrar
 	$admin = new Role();
-	$admin->name = 'Admin';
+	$admin->name = 'admin';
 	$admin->save();
 
-	$add = new Permission();
-	$add->name = 'can_add';
-	$add->save();
+	$teacher = new Role();
+	$teacher->name = 'teacher';
+	$teacher->save();
 
-	$modify = new Permission();
-	$modify->name = 'can_modify';
-	$modify->save();
+	$user = new Role();
+	$user->name = 'user';
+	$user->save();
 
-	$delete = new Permission();
-	$delete->name = 'can_add';
-	$delete->save();
 
-	$admin->attachPermission($add);
-	$admin->attachPermission($modify);
-	$admin->attachPermission($delete);
 
-	// $user1 = User::find(1);
-	// $user1->attachRole($admin);
+	$add_user = new Permission();
+	$add_user->name = 'can_add_user';
+	$add_user->save();
+
+	$modify_user = new Permission();
+	$modify_user->name = 'can_modify_user';
+	$modify_user->save();
+
+	$delete_user = new Permission();
+	$delete_user->name = 'can_delete_user';
+	$delete_user->save();
+
+	$add_topic = new Permission();
+	$add_topic->name = 'can_add_topic';
+	$add_topic->save();
+
+	$modify_topic = new Permission();
+	$modify_topic->name = 'can_modify_topic';
+	$modify_topic->save();
+
+	$delete_topic = new Permission();
+	$delete_topic->name = 'can_delete_topic';
+	$delete_topic->save();
+
+	$add_question = new Permission();
+	$add_question->name = 'can_add_questiton';
+	$add_question->save();
+
+	$modify_question = new Permission();
+	$modify_question->name = 'can_modify_questiton';
+	$modify_question->save();
+
+	$delete_question = new Permission();
+	$delete_question->name = 'can_delete_questiton';
+	$delete_question->save();
+
+
+
+	$admin->attachPermission($add_user);
+	$admin->attachPermission($modify_user);
+	$admin->attachPermission($delete_user);
+	$admin->attachPermission($add_topic);
+	$admin->attachPermission($modify_topic);
+	$admin->attachPermission($delete_topic);
+	$admin->attachPermission($add_question);
+	$admin->attachPermission($modify_question);
+	$admin->attachPermission($delete_question);
+
+	$teacher->attachPermission($add_topic);
+	$teacher->attachPermission($modify_topic);
+	$teacher->attachPermission($delete_topic);
+	$teacher->attachPermission($add_question);
+	$teacher->attachPermission($modify_question);
+	$teacher->attachPermission($delete_question);
+
+
+	// setup an admin
+	$user = User::where('name', 'manolo')->get()->first();
+	$userRole = Role::where('name', 'admin')->get()->first();
+	$user->attachRole($userRole);
 
 	return 'success';
 });

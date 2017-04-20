@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Role as Role;
+use App\Permission as Permission;
 
 class RegisterController extends Controller
 {
@@ -60,12 +62,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
+	protected function create(array $data)
+	{
+		$user = User::create([
+					'name' => $data['name'],
+					'email' => $data['email'],
+					'password' => bcrypt($data['password']),
+				]);
+		$userRole = Role::where('name', 'user')->get()->first();
+		$user->attachRole($userRole);
+
+		return $user;
+	}
 }
