@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@permission('can_modify_topic')
 <div class="container">
     <form action="{{ URL::to('topic/' . $topic->id . '/update') }}" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -10,4 +11,5 @@
         <input type="submit" name='save' class="btn btn-default" value = "Update Topic" />
     </form>
 </div>
+@endpermission
 @endsection

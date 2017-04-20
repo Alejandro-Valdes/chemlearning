@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@permission('can_add_question')
 <div class="container">
     <form action="{{ url('/topic/' . $topic_id . '/new-question') }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -27,6 +28,7 @@
 		<input type="submit" name='save' class="btn btn-default" value = "Save Question"/>
     </form>
 </div>
+@permission
 @endsection
 
 @section('script')
