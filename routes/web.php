@@ -103,7 +103,7 @@ Route::get('setup-entrust', function() {
 
 
 	// setup an admin
-	$user = User::where('name', 'manolo')->get()->first();
+	$user = User::where('name', 'admin')->get()->first();
 	$userRole = Role::where('name', 'admin')->get()->first();
 	$user->attachRole($userRole);
 
