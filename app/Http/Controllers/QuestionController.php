@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\Answer;
 use App\Topic;
+use Auth;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -82,6 +83,22 @@ class QuestionController extends Controller
         
         $answers = $question->answers;
         return view('questions.show')->withQuestion($question)->withAnswers($answers)->withTopic($topic);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function answer($topic_id, $id, Request $request)
+    {
+
+        dd(Auth::user());
+        $topic = Topic::find($topic_id);
+
+        $questions = $topic->questions;
+        return redirect('topic/' . $topic_id )->withTopic($topic)->withQuestions($questions);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ url('/topic/' . $topic->id ) }}" method="post">
+    <form action="{{ url('/topic/' . $topic->id . '/question/' . $question->id) }}" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group">
