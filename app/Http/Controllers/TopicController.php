@@ -43,7 +43,7 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array('name' => 'required');
+        $rules = array('name' => 'required', 'info' => 'required');
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) 
@@ -56,6 +56,7 @@ class TopicController extends Controller
         {
             $topic = new Topic();
             $topic->name = $request->get('name');
+            $topic->info = $request->get('info');
 
             $topic->save();
 
@@ -100,7 +101,11 @@ class TopicController extends Controller
     {
         $topic = Topic::find($id);
         $topic->update(['name' => $request->name]);
-        return view('topics.show')->withTopic($topic);
+        $topic->update(['info' => $request->info]);
+
+        $questions = $topic->questions;
+
+        return view('topics.show')->withTopic($topic)->withQuestions($questions);
     }
 
     /**
