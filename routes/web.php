@@ -31,6 +31,10 @@ Route::get('/topic/{topic_id}/new-question', 'QuestionController@create');
 Route::post('/topic/{topic_id}/new-question', 'QuestionController@store');
 Route::get('/topic/{topic_id}/question/{id}', 'QuestionController@show');
 
+Route::get('/admin/usuarios', 'AdminController@index');
+Route::post('/admin/usuarios/{id}/guardar', 'AdminController@update');
+
+
 
 Route::get('setup-entrust', function() {
 	$admin = new Role();

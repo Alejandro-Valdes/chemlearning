@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use App\Role as Role;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

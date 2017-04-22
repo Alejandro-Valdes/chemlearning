@@ -12,6 +12,11 @@
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="panel panel-default">
+				@permission('can_modify_user')
+				<div class="panel-heading">
+					<a href="{{ url('/admin/usuarios') }}">Modificar usuarios</a>
+				</div>
+				@endpermission
 				@permission('can_add_topic')
 				<div class="panel-heading">
 					{{$title}} <a href="{{ url('/new-topic') }}">Add new topic</a>
