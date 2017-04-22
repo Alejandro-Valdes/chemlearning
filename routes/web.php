@@ -71,15 +71,15 @@ Route::get('setup-entrust', function() {
 	$delete_topic->save();
 
 	$add_question = new Permission();
-	$add_question->name = 'can_add_questiton';
+	$add_question->name = 'can_add_question';
 	$add_question->save();
 
 	$modify_question = new Permission();
-	$modify_question->name = 'can_modify_questiton';
+	$modify_question->name = 'can_modify_question';
 	$modify_question->save();
 
 	$delete_question = new Permission();
-	$delete_question->name = 'can_delete_questiton';
+	$delete_question->name = 'can_delete_question';
 	$delete_question->save();
 
 
