@@ -8,6 +8,9 @@
                 <div class="panel-heading">
                     {{$topic->name}}
                 </div>
+                <div>
+                    {{ $topic->info }}
+                </div>
             </div>
         </div>
     </div>
