@@ -28,7 +28,7 @@
 		<input type="submit" name='save' class="btn btn-default" value = "Save Question"/>
     </form>
 </div>
-@permission
+@endpermission
 @endsection
 
 @section('script')
