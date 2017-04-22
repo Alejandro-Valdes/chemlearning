@@ -14,7 +14,7 @@
 		            <div class="form-group row">
 		              <div class="col-sm-10 col-sm-offset-1 input-group">
 		                <div class="input-group-addon">
-		                  <input class="correct_check" type="checkbox" name="answers[{{ $answer }}][is_correct]">
+		                  <input class="correct_check" type="checkbox" name="answers[{{ $answer->id }}][is_correct]">
 		                </div>
 		                <div class="input-group">
 		                	{{ $answer->text }}

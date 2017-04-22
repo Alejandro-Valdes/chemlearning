@@ -59,7 +59,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} - puntaje {{ Auth::user()->score }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -79,8 +79,26 @@
                         @endif
                     </ul>
                 </div>
-            </div>
+            </div>  
         </nav>
+
+        @if (isset($message))
+            <div class="container">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ $message }}
+                </div>  
+            </div>
+        @endif
+
+        @if (isset($error))
+            <div class="container">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ $error }}
+                </div>  
+            </div>
+        @endif
 
         @yield('content')
     </div>

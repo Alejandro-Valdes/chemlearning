@@ -82,6 +82,7 @@ class QuestionController extends Controller
         $question = Question::find($id);
         
         $answers = $question->answers;
+
         return view('questions.show')->withQuestion($question)->withAnswers($answers)->withTopic($topic);
     }
 
@@ -93,12 +94,60 @@ class QuestionController extends Controller
      */
     public function answer($topic_id, $id, Request $request)
     {
-
-        dd(Auth::user());
+        $user = Auth::user();
         $topic = Topic::find($topic_id);
+        $question = Question::find($id);
 
+        $correctAnswers = $question->answers->where('is_correct', 1);
+        $numExpectedAnswers = count($correctAnswers);
+        $numActualAnswers = 0;
+        
+        $answers = $question->answers;
         $questions = $topic->questions;
-        return redirect('topic/' . $topic_id )->withTopic($topic)->withQuestions($questions);
+
+        $userAnswers = $request->answers;
+
+        if(count($userAnswers) == $numExpectedAnswers){
+            foreach ($userAnswers as $key => $value) {
+                $answer = Answer::find($key);
+                if($answer->is_correct){
+                    $numActualAnswers++;
+                }
+            }
+        }
+        #not expected num of answers
+        else{
+            $numActualAnswers = count($userAnswers);
+        }
+
+        #correct answer
+        if($numExpectedAnswers == $numActualAnswers){
+            $score = $user->score;
+            $score += $numExpectedAnswers;
+
+            $user->score = $score;
+            $user->save();
+
+            $message = 'Felicidades, te supiste todas! tu nuevo puntaje es: ' . $score;
+
+            return view('topics.show')->withTopic($topic)->withQuestions($questions)->withMessage($message);
+        }
+
+        #incorrect
+        else{   
+
+            $message = '';
+
+            if($numActualAnswers < $numExpectedAnswers){
+                $message = 'Checa bien, te faltaron respuestas correctas';
+            }
+            else{
+                $message = 'Mandaste respuestas incorrectas!';
+            }
+
+            return view('questions.show')->withQuestion($question)->withAnswers($answers)->withTopic($topic)->withError($message);
+        }
+
     }
 
     /**
