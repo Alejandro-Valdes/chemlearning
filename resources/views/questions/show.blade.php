@@ -10,7 +10,7 @@
 
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h1>{{ $question->question_body }}</h1>
+            <h3>{{ $question->question_body }}</h3>
           </div>
         	<div id="answer_container" class="well">
             <p class="col-sm-8 col-sm-offset-0.5">Posibles respuestas: </p>
