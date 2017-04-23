@@ -22,8 +22,8 @@
 					{{$title}} <a href="{{ url('/new-topic') }}">Add new topic</a>
 				</div>
 				@endpermission
-				<div class="panel-body">
-					@foreach( $topics as $topic )
+				@foreach( $topics as $topic )
+					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-6">
 								{{$topic->name}}
@@ -47,8 +47,8 @@
 							</div>
 							@endpermission
 						</div>
-					@endforeach
-				</div>
+					</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
