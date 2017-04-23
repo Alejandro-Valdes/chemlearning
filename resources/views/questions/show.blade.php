@@ -6,26 +6,32 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group">
-        	<h1>{{ $question->question_body }}</h1>
 
-        	<p>Posible answers: </p>
-        	<div id="answer_container" class="col-sm-10">
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h1>{{ $question->question_body }}</h1>
+          </div>
+        	<div id="answer_container" class="well">
+            <p class="col-sm-8 col-sm-offset-0.5">Posibles respuestas: </p>
+            <ul class="list-group checked-list-box">
         	 	@foreach($answers as $answer)
 		            <div class="form-group row">
 		              <div class="col-sm-10 col-sm-offset-1 input-group">
-		                <div class="input-group-addon">
+		                <span class="input-group-addon">
 		                  <input class="correct_check" type="checkbox" name="answers[{{ $answer->id }}][is_correct]">
-		                </div>
-		                <div class="input-group">
-		                	{{ $answer->text }}
-		                </div>
+		                </span>
+		                <li class="list-group-item">{{ $answer->text }}</li>
 		              </div>
 		            </div>
 	          	@endforeach
+            </ul>
         	</div>
         </div>
-		
-		<input type="submit" name='save' class="btn btn-default" value = "Submit Answer"/>
+      </div>
+        <p align="right">
+		        <input type="submit" name='save' class="btn btn-default" value = "Submit"/>
+        </p>
     </form>
 </div>
 @endsection

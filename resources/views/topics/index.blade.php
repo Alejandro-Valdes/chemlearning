@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="container" align="middle" style="margin-bottom:30px">
+	<img src="{{ asset('img/chem.png') }}" style="width: 20%; height: 20%">
+</div>
+
 <div class="container">
 @if ( !$topics->count() )
 	There are no topics yet. Create a new topic to get started!
@@ -11,15 +16,10 @@
 @else
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
-			<div class="panel panel-default">
-				@permission('can_modify_user')
-				<div class="panel-heading">
-					<a href="{{ url('/admin/usuarios') }}">Modificar usuarios</a>
-				</div>
-				@endpermission
+			<div class="panel panel-primary">
 				@permission('can_add_topic')
 				<div class="panel-heading">
-					{{$title}} <a href="{{ url('/new-topic') }}">Add new topic</a>
+					{{$title}}
 				</div>
 				@endpermission
 				@foreach( $topics as $topic )
@@ -49,6 +49,15 @@
 						</div>
 					</div>
 				@endforeach
+
+				@permission('can_modify_user')
+				<div class="panel-footer">
+					<a href="{{ url('/new-topic') }}">Add new topic</a>
+					<a href="{{ url('/admin/usuarios') }}" style="float: right;">Modificar usuarios</a>
+				</div>
+
+				@endpermission
+			</div>
 			</div>
 		</div>
 	</div>
