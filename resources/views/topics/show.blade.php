@@ -9,7 +9,7 @@
                     {{$topic->name}}
                 </div>
                 <div>
-                    {{ $topic->info }}
+                    <p>{!! nl2br(e($topic->info)) !!}</p>
                 </div>
             </div>
         </div>
