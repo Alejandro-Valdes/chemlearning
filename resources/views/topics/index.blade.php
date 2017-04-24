@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="container" align="middle" style="margin-bottom:30px">
-	<img src="{{ asset('img/chem.png') }}" style="width: 20%; height: 20%">
+<div class="container" id="imagenDiv">
+	<img src="{{ asset('img/chem2.png') }}" id="imagen">
 </div>
 
 <div class="container">
