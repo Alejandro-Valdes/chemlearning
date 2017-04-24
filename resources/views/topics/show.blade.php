@@ -26,14 +26,14 @@
                 <tbody>
                   <tr>
                     <td>{{$question->question_body}}</td>
-                    <td><a href="{{ url('/topic/' . $topic->id . '/question/' . $question->id) }}">Solve</a></td>
+                    <td><a href="{{ url('/topic/' . $topic->id . '/question/' . $question->id) }}">Contestar</a></td>
                   </tr>
                 </tbody>
                 @endforeach
               </table>
 
               @permission('can_add_question')
-              <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Add new question</a>
+              <a href="{{ url('/topic/' . $topic->id . '/new-question') }}">Añadir nueva pregunta</a>
               @endpermission
                   <br><br>
             			@endif
