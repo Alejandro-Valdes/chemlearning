@@ -37,7 +37,7 @@
 							@endpermission
 							@permission('can_delete_topic')
 							<div class="col-sm-2">
-								<form method="POST" action="{{ URL::to('topic/' . $topic->id . '/delete') }}">
+								<form method="POST" action="{{ URL::to('topic/' . $topic->id . '/delete') }}" onSubmit="if(!confirm('¿Seguro que quieres borrar el tema?')){return false;}">
 									{{ method_field('DELETE') }}
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<button type="submit" class="btn btn-small btn-danger">Borrar</button>
