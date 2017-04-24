@@ -12,11 +12,11 @@
           <div class="panel-heading">
             <h3>{{ $question->question_body }}</h3>
 
-            @if ($question->photo != null)
-                <img style="width: 100%"   _ src="/images/{{ $question->photo }}" alt="">
-            @endif
           </div>
         	<div id="answer_container" class="well">
+            @if ($question->photo != null)
+                <img style="width: 40%; margin-left: 30%;"   src="/images/{{ $question->photo }}" alt="">
+            @endif
             <p class="col-sm-8 col-sm-offset-0.5">Posibles respuestas: </p>
             <ul class="list-group checked-list-box">
         	 	@foreach($answers as $answer)
