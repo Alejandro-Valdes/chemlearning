@@ -3,11 +3,13 @@
 @section('content')
 @permission('can_add_question')
 <div class="container">
-    <form action="{{ url('/topic/' . $topic_id . '/new-question') }}" method="post">
+    <form action="{{ url('/topic/' . $topic_id . '/new-question') }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group">
         	<input required="required" value="{{ old('question_body') }}" placeholder="Enter question here" type="text" name = "question_body" class="form-control" />
+
+        	<input type="file" name="photo">
 
         	 <p>Posible answers: </p>
         	 <div id="answer_container" class="col-sm-10">

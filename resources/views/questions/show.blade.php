@@ -11,6 +11,10 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3>{{ $question->question_body }}</h3>
+
+            @if ($question->photo != null)
+                <img style="width: 100%"   _ src="/images/{{ $question->photo }}" alt="">
+            @endif
           </div>
         	<div id="answer_container" class="well">
             <p class="col-sm-8 col-sm-offset-0.5">Posibles respuestas: </p>

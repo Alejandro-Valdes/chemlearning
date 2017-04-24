@@ -39,10 +39,20 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $topic_id)
-    {
+    {           
+        $this->validate($request, [
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,'
+        ]);
+
         $topic = Topic::find($topic_id);
 
+        $photo = time().'.'.$request->photo->getClientOriginalExtension();
+
+        $request->photo->move(public_path('images'), $photo);
+
+
         $question = new Question();
+        $question->photo = $photo;
         $question->question_body = $request->get('question_body');
         $question->topic()->associate($topic);
         $question->save();
