@@ -22,10 +22,10 @@
 		            </div>
 	          	@endfor
         	 </div>
-        	 <div id="add_answer_btn" class="btn btn-success">Add Answer</div>
+        	 <div id="add_answer_btn" class="btn btn-default">Add Answer</div>
         </div>
 		
-		<input type="submit" name='save' class="btn btn-default" value = "Save Question"/>
+		<input type="submit" name='save' class="btn btn-success" value = "Save Question"/>
     </form>
 </div>
 @endpermission
