@@ -15,7 +15,7 @@
         	</textarea> 
         </div>
 
-        <input type="submit" name='save' class="btn btn-default" value = "Update Topic" />
+        <input type="submit" name='save' class="btn btn-default" value = "Guardar Cambios" />
     </form>
 </div>
 @endpermission

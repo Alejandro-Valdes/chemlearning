@@ -48,13 +48,14 @@
 					</div>
 				@endforeach
 
-				@permission('can_modify_user')
 				<div class="panel-footer">
+					@permission('can_add_topic')
 					<a href="{{ url('/new-topic') }}">Añadir nuevo tema</a>
-					<a href="{{ url('/admin/usuarios') }}" style="float: right;">Modificar usuarios</a>
+					@endpermission
+					@permission('can_modify_user')
+						<a href="{{ url('/admin/usuarios') }}" style="float: right;">Modificar usuarios</a>
+					@endpermission
 				</div>
-
-				@endpermission
 			</div>
 			</div>
 		</div>

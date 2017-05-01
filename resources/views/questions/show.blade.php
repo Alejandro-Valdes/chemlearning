@@ -34,7 +34,7 @@
         </div>
       </div>
         <p align="right">
-		        <input type="submit" name='save' class="btn btn-default" value = "Submit"/>
+		        <input type="submit" name='save' class="btn btn-default" value = "Contestar"/>
         </p>
     </form>
 </div>

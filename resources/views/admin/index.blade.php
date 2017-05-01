@@ -32,7 +32,13 @@
 
 													@foreach( $roles as $role )
 													<option value="{{$role->id}}">
-														{{$role->name}}
+														@if ($role->name == 'admin')
+															Administrador
+														@elseif ($role->name == 'teacher')
+															Profesor
+														@else
+															Alumno
+														@endif
 													</option>
 													@endforeach
 												</select>
